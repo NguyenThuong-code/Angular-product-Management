@@ -14,22 +14,22 @@ export class ProductService {
   }
 
   getAll(): Observable<Product[]> {
-    return this.http.get<Product[]>(API_URL + '/products');
+    return this.http.get<Product[]>(API_URL + '/products/list');
   }
 
   saveProduct({product}: { product: any }): Observable<Product> {
-    return this.http.post<Product>(API_URL + '/products', product);
+    return this.http.post<Product>(API_URL + '/products/create', product);
   }
 
   findById(id: number): Observable<Product> {
-    return this.http.get<Product>(`${API_URL}/products/${id}`);
+    return this.http.get<Product>(`${API_URL}/products/findById/${id}`);
   }
 
   updateProduct(id: number, product: Product): Observable<Product> {
-    return this.http.put<Product>(`${API_URL}/products/${id}`, product);
+    return this.http.put<Product>(`${API_URL}/products/edit/${id}`, product);
   }
 
   deleteProduct(id: number): Observable<Product> {
-    return this.http.delete<Product>(`${API_URL}/products/${id}`);
+    return this.http.delete<Product>(`${API_URL}/products/delete/${id}`);
   }
 }
